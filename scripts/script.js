@@ -20,18 +20,15 @@ const numberOfStone = 10; // stone1, stone2, stone3, stone4, stone5, stone6 (sto
 
 // Spawn Stone Rate
 var totalWaitTime = 0;
-const spawnTimeInterval = 0.7; // seconds
+const spawnTimeInterval = 0.6; // seconds
 
 // Gravity
-const gravity = -0.2;
+const gravity = -0.25;
 
 // Time Limit
 const TimeLimit = 40; // seconds
 var timer = TimeLimit;
 var score = 0;
-
-// End Message
-const endMessage = "Good Job!";
 
 Promise.all([
     // Find assets from Project
@@ -208,7 +205,30 @@ Promise.all([
                 } else {
                 if (timer <= 0) {
                     Patches.setBooleanValue('confetti', true);
-                    endText0.text = endMessage;
+                    if (between(score, 0 , 79)) {
+                        endText0.text = "Can be better!";
+                        endText0.transform.scaleX = 0.0009;
+                        endText0.transform.x = -0.08826;
+                    } else
+                    if (between(score, 80 , 129)) {
+                        endText0.text = "Well done!";
+                        endText0.transform.scaleX = 0.001;
+                        endText0.transform.x = -0.0704;
+                    } else 
+                    if (between(score, 130 , 179)) {
+                        endText0.text = "Great!";
+                        endText0.transform.scaleX = 0.001;
+                        endText0.transform.x = -0.04359;
+                    } else 
+                    if (between(score, 180 , 229)) {
+                        endText0.text = "Great Job!";
+                        endText0.transform.scaleX = 0.001;
+                        endText0.transform.x = -0.07096;
+                    } else {
+                        endText0.text = "Perfect!";
+                        endText0.transform.scaleX = 0.001;
+                        endText0.transform.x = -0.05365;
+                    }
                     endText.text = "Your Score: ";
                     endScore.text = String(score);
                     TimerText.text = "";
@@ -226,6 +246,10 @@ Promise.all([
         lastTime = time;
     }, timeInterval);
 }
+
+function between(x, min, max) {
+    return x >= min && x <= max;
+  }
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
