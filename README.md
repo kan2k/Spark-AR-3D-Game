@@ -1,5 +1,5 @@
 # Spark AR Physic-based 3D Game
-AR Game with CannonJS Physic  
+Instagram AR Game with CannonJS Physic  
 
 # To Start
 Go to the patch editor and choose whether to start with recording/tap screen.  
